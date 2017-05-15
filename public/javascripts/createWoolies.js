@@ -1,6 +1,6 @@
 (function () {
 
-	for (var i = 24; i >= 0; i--) {
+	for (var i = 96; i >= 0; i--) {
 		window.woolieGenerator.create(i + 1);
 	}
 	

@@ -79,6 +79,26 @@
 				x: '-' + (containerWidth+woolieSize),
 				y: '-' + (containerHeight+woolieSize)
 			}
+		},
+		6: {
+			start: {
+				x: '-' + woolieSize,
+				y: (containerHeight/16)
+			},
+			end: {
+				x: (containerWidth+woolieSize),
+				y: '-' + woolieSize
+			}
+		},
+		7: {
+			start: {
+				x: containerWidth,
+				y: (containerHeight/16)
+			},
+			end: {
+				x: '-' + (containerWidth+woolieSize),
+				y: '-' + woolieSize
+			}
 		}
 	};
 
@@ -92,7 +112,7 @@
 
 		create: function (delay) {
 			var woolieType = woolieMap[getRandomIntInclusive(0, 11)];
-			var positionCoordinates = positionMap[getRandomIntInclusive(0, 5)];
+			var positionCoordinates = positionMap[getRandomIntInclusive(0, 7)];
 
 			var $woolieContainer = $('<div class="woolie-container"></div>');
 			var $woolie = $('<div class="woolie"></div>');
