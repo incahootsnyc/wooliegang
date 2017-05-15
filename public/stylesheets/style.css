@@ -7,10 +7,6 @@ body {
 	font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-a {
-	color: #00B7FF;
-}
-
 .float-body {
 	position: relative;
 	overflow: hidden;
@@ -34,16 +30,52 @@ a {
 	transform-origin: 50% 50%;
 }
 
-.uno {
+.one {
 	background-image: url(/images/Woolie0float8bit.png);
 }
 
-.dos {
+.two {
 	background-image: url(/images/Woolie1float8bit.png);
 }
 
-.tres {
+.three {
 	background-image: url(/images/Woolie2float8bit.png);
+}
+
+.four {
+	background-image: url(/images/Woolie3float8bit.png);
+}
+
+.five {
+	background-image: url(/images/Woolie4float8bit.png);
+}
+
+.six {
+	background-image: url(/images/Woolie5float8bit.png);
+}
+
+.seven {
+	background-image: url(/images/Woolie6float8bit.png);
+}
+
+.eight {
+	background-image: url(/images/Woolie7float8bit.png);
+}
+
+.nine {
+	background-image: url(/images/Woolie8float8bit.png);
+}
+
+.ten {
+	background-image: url(/images/Woolie9float8bit.png);
+}
+
+.eleven {
+	background-image: url(/images/Woolie10float8bit.png);
+}
+
+.twelve {
+	background-image: url(/images/Woolie11float8bit.png);
 }
 
 @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
