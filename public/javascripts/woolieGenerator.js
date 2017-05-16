@@ -10,15 +10,15 @@
 		0: 'one',
 		1: 'two',
 		2: 'three',
-		4: 'four',
-		5: 'five',
-		6: 'six',
-		7: 'seven',
-		8: 'eight',
-		9: 'nine',
-		10: 'ten',
-		11: 'eleven',
-		12: 'twelve'
+		3: 'four',
+		4: 'five',
+		5: 'six',
+		6: 'seven',
+		7: 'eight',
+		8: 'nine',
+		9: 'ten',
+		10: 'eleven',
+		11: 'twelve'
 	};
 
 	var positionMap = {
@@ -108,7 +108,7 @@
 		min = Math.ceil(min);
 		max = Math.floor(max);
 		return Math.floor(Math.random() * (max - min + 1)) + min;
-	}
+	};
 
 	var createWoolies = function (delay) {
 		var timeout;
@@ -160,7 +160,7 @@
 		}, 500 * delay);
 
 		return true;
-	}
+	};
 
 	// start woolie gang text growth
 	$('h1').css('font-size', '32px');

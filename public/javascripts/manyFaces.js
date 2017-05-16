@@ -4,60 +4,76 @@
 		0: 'one',
 		1: 'two',
 		2: 'three',
-		4: 'four',
-		5: 'five',
-		6: 'six',
-		7: 'seven',
-		8: 'eight',
-		9: 'nine',
-		10: 'ten',
-		11: 'eleven',
-		12: 'twelve',
-		13: 'thirteen',
-		14: 'fourteen',
-		15: 'fifteen',
-		16: 'sixteen',
-		17: 'seventeen',
-		18: 'eighteen',
-		19: 'nineteen',
-		20: 'twenty',
-		21: 'twentyone',
-		22: 'twentytwo'
+		3: 'four',
+		4: 'five',
+		5: 'six',
+		6: 'seven',
+		7: 'eight',
+		8: 'nine',
+		9: 'ten',
+		10: 'eleven',
+		11: 'twelve',
+		12: 'thirteen',
+		13: 'fourteen',
+		14: 'fifteen',
+		15: 'sixteen',
+		16: 'seventeen',
+		17: 'eighteen',
+		18: 'nineteen',
+		19: 'twenty',
+		20: 'twentyone',
+		21: 'twentytwo'
 	};
 
-	var faceSize = 500;
+	var faceSize = 125;
+	var faces = {};
 	var faceCount = Object.keys(faceMap).length;
 	var containerHeight = $('body').height();
 	var containerWidth = $('body').width();
 	var $floatContainer = $('.float-body');
 
 	var horizontalSpots = Math.floor(containerWidth/faceSize);
-	// var verticalSpots = Math.floor(containerHeight/faceSize);
-	// var totalSpots = horizontalSpots * verticalSpots;
-	var availableSpots = [];
 	var left = 0;
 	var top = 0;
+	var rowCount = 0;
 
-	for (var i = 0; i < faceCount; i++) {
-		var nextRow = i%horizontalSpots == 0;
-		var $face = $('<div class="face one-f"></div>');
+	var getRandomIntInclusive = function (min, max) {
+		min = Math.ceil(min);
+		max = Math.floor(max);
+		return Math.floor(Math.random() * (max - min + 1)) + min;
+	};
 
-		if (nextRow && i > 0) {
-			top = top+500;
-			left = 0;
+	var createRandomFace = function (index) {
+		var nextRow = index%horizontalSpots == 0;
+		var randomFaceIndex = getRandomIntInclusive(0, faceCount-1);
+		var randomFace = faceMap[randomFaceIndex];
+		var $face = $('<div class="face"></div>');
+
+		// make sure we don't generate woolie dupes
+		if (faces[randomFace]) {
+			createRandomFace(index);
+			return false;
 		} else {
-			left = faceSize * i;
+			faces[randomFace] = true;
+		}
+
+		if (nextRow && index > 0) {
+			top = top + faceSize;
+			left = 0;
+			rowCount = 0
+		} else {
+			left = faceSize * rowCount;
 		}
 		
-
-		// availableSpots.push({
-		// 	left: left,
-		// 	top: top
-		// });
-
 		$face.css('top', top + 'px');
 		$face.css('left', left + 'px');
-		$floatContainer.append($face)
+		$face.addClass(randomFace + '-f');
+		$floatContainer.append($face);
+		rowCount++;
+	};
+
+	for (var i = 0; i < faceCount; i++) {
+		createRandomFace(i);
 	}
 
 
