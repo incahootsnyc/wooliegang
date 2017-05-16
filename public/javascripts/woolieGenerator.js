@@ -148,6 +148,10 @@
 		}, 500 * delay);
 	}
 
+	// start woolie gang text growth
+	$('h1').css('font-size', '32px');
+
+	// generate woolies
 	for (var i = woolieCount; i >= 0; i--) {
 		createWoolies(i + 1);
 	}
