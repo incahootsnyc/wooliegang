@@ -1,5 +1,6 @@
 (function () {
 
+	var woolieCount = 48;
 	var woolieSize = 512;
 	var containerHeight = $('body').height();
 	var containerWidth = $('body').width();
@@ -102,35 +103,53 @@
 		}
 	};
 
-	function getRandomIntInclusive (min, max) {
+	var getRandomIntInclusive = function (min, max) {
 		min = Math.ceil(min);
 		max = Math.floor(max);
 		return Math.floor(Math.random() * (max - min + 1)) + min;
 	}
 
-	window.woolieGenerator = {
+	var createWoolies = function (delay) {
+		var timeout;
+		var interval;
+		// generate random woolie and trajectory
+		var woolieType = woolieMap[getRandomIntInclusive(0, Object.keys(woolieMap).length-1)];
+		var positionCoordinates = positionMap[getRandomIntInclusive(0, Object.keys(positionMap).length-1)];
 
-		create: function (delay) {
-			var woolieType = woolieMap[getRandomIntInclusive(0, 11)];
-			var positionCoordinates = positionMap[getRandomIntInclusive(0, 7)];
+		var $woolieContainer = $('<div class="woolie-container"></div>');
+		var $woolie = $('<div class="woolie"></div>');
+		var $floatContainer = $('.float-body');
 
-			var $woolieContainer = $('<div class="woolie-container"></div>');
-			var $woolie = $('<div class="woolie"></div>');
-			var $floatContainer = $('.float-body');
+		$woolieContainer.css('left', positionCoordinates.start.x + 'px');
+		$woolieContainer.css('top', positionCoordinates.start.y + 'px');
+		$woolie.addClass(woolieType);
 
-			$woolieContainer.css('left', positionCoordinates.start.x + 'px');
-			$woolieContainer.css('top', positionCoordinates.start.y + 'px');
-			$woolie.addClass(woolieType);
+		$woolieContainer.append($woolie);
+		$floatContainer.append($woolieContainer);
 
-			$woolieContainer.append($woolie);
-			$floatContainer.append($woolieContainer);
+		// check woolie position and remove when it has arrived in its final spot
+		interval = setInterval(function () {
+			var wooliePosition = $woolieContainer.position();
+			var finalX = parseInt(positionCoordinates.end.x) + parseInt(positionCoordinates.start.x);
+			var finalY = parseInt(positionCoordinates.end.y) + parseInt(positionCoordinates.start.y);
+			// console.log(wooliePosition);
+			if (wooliePosition.left >= finalX && 
+				wooliePosition.top >= finalY) {
+				$woolieContainer.remove();
+				clearInterval(interval);
+			}
+		}, 1000);
 
-			setTimeout(function () {
-				$woolieContainer.css('transform', 'translate(' + 
-					positionCoordinates.end.x + 'px, ' + positionCoordinates.end.y + 'px)');
-			}, 500 * delay);
-		}
+		// set transform to start woolie movement
+		timeout = setTimeout(function () {
+			$woolieContainer.css('transform', 'translate(' + 
+				positionCoordinates.end.x + 'px, ' + positionCoordinates.end.y + 'px)');
+			clearTimeout(timeout);
+		}, 500 * delay);
+	}
 
+	for (var i = woolieCount; i >= 0; i--) {
+		createWoolies(i + 1);
 	}
 	
 })();
