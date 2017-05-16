@@ -13,6 +13,8 @@ h1 {
 	transition: all 48s ease-in-out;
 }
 
+/* home page */
+
 .float-body {
 	position: relative;
 	text-align: center;
@@ -89,6 +91,112 @@ h1 {
 .twelve {
 	background-image: url(/images/Woolie11float8bit.png);
 }
+
+
+
+/* many faces */
+
+.float-body.faces {
+	background: #ffffff;
+	overflow: scroll;
+}
+
+.face {
+	position: absolute;
+	width: 500px;
+	height: 500px;
+	display: inline-block;
+	background-size: 500px;
+}
+
+.one-f {
+	background-image: url(/images/face1.png);
+}
+
+.two-f {
+	background-image: url(/images/face2.png);
+}
+
+.three-f {
+	background-image: url(/images/face3.png);
+}
+
+.four-f {
+	background-image: url(/images/face4.png);
+}
+
+.five-f {
+	background-image: url(/images/face5.png);
+}
+
+.six-f {
+	background-image: url(/images/face6.png);
+}
+
+.seven-f {
+	background-image: url(/images/face7.png);
+}
+
+.eight-f {
+	background-image: url(/images/face8.png);
+}
+
+.nine-f {
+	background-image: url(/images/face9.png);
+}
+
+.ten-f {
+	background-image: url(/images/face10.png);
+}
+
+.eleven-f {
+	background-image: url(/images/face11.png);
+}
+
+.twelve-f {
+	background-image: url(/images/face12.png);
+}
+
+.thirteen-f {
+	background-image: url(/images/face13.png);
+}
+
+.fourteen-f {
+	background-image: url(/images/face14.png);
+}
+
+.fifteen-f {
+	background-image: url(/images/face15.png);
+}
+
+.sixteen-f {
+	background-image: url(/images/face16.png);
+}
+
+.seventeen-f {
+	background-image: url(/images/face17.png);
+}
+
+.eighteen-f {
+	background-image: url(/images/face18.png);
+}
+
+.nineteen-f {
+	background-image: url(/images/face19.png);
+}
+
+.twenty-f {
+	background-image: url(/images/face20.png);
+}
+
+.twentyone-f {
+	background-image: url(/images/face21.png);
+}
+
+.twentytwo-f {
+	background-image: url(/images/face22.png);
+}
+
 
 @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
 @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
