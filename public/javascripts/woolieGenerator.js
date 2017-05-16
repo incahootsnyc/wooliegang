@@ -4,6 +4,7 @@
 	var woolieSize = 512;
 	var containerHeight = $('body').height();
 	var containerWidth = $('body').width();
+	var woolieList = {};
 
 	var woolieMap = {
 		0: 'one',
@@ -113,8 +114,19 @@
 		var timeout;
 		var interval;
 		// generate random woolie and trajectory
-		var woolieType = woolieMap[getRandomIntInclusive(0, Object.keys(woolieMap).length-1)];
-		var positionCoordinates = positionMap[getRandomIntInclusive(0, Object.keys(positionMap).length-1)];
+		var randomType = getRandomIntInclusive(0, Object.keys(woolieMap).length-1);
+		var randomPath = getRandomIntInclusive(0, Object.keys(positionMap).length-1);
+		var woolieType = woolieMap[randomType];
+		var positionCoordinates = positionMap[randomPath];
+		var woolieCombo = randomType.toString() + randomPath.toString();
+
+		// make sure we don't generate woolie dupes
+		if (woolieList[woolieCombo]) {
+			createWoolies(delay);
+			return false;
+		} else {
+			woolieList[woolieCombo] = true;
+		}
 
 		var $woolieContainer = $('<div class="woolie-container"></div>');
 		var $woolie = $('<div class="woolie"></div>');
@@ -146,14 +158,19 @@
 				positionCoordinates.end.x + 'px, ' + positionCoordinates.end.y + 'px)');
 			clearTimeout(timeout);
 		}, 500 * delay);
+
+		return true;
 	}
 
 	// start woolie gang text growth
 	$('h1').css('font-size', '32px');
 
 	// generate woolies
-	for (var i = woolieCount; i >= 0; i--) {
+	for (var i = woolieCount; i > 0; i--) {
 		createWoolies(i + 1);
 	}
+
+	// console.log(woolieList);
+	// console.log(Object.keys(woolieList).length);
 	
 })();
