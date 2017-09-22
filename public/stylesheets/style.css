@@ -13,6 +13,10 @@ h1 {
 	transition: all 48s ease-in-out;
 }
 
+h1 a {
+	color: #ffffff;
+}
+
 /* home page */
 
 .float-body {
