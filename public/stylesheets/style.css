@@ -100,17 +100,34 @@ h1 a {
 
 /* many faces */
 
+.many-faces {
+	position: absolute;
+	left: 10vw;
+	top: 10vh;
+}
+
 .float-body.faces {
 	background: #ffffff;
 	overflow: scroll;
+	flex-wrap: wrap;
+	padding: 10px 50px;
+	width: auto;
 }
 
 .face {
-	position: absolute;
-	width: 125px;
-	height: 125px;
-	display: inline-block;
-	background-size: 125px;
+	width: 150px;
+	height: 150px;
+	background-size: 150px;
+}
+
+.shuffle-container {
+	text-align: center;
+	padding: 20px;
+}
+
+#shuffle {
+	width: 100px;
+	height: 50px;;
 }
 
 .one-f {

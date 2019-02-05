@@ -1,4 +1,4 @@
-(function () {
+function makeFaces () {
 
 	var faceMap = {
 		0: 'one',
@@ -28,7 +28,6 @@
 	var faceSize = 125;
 	var faces = {};
 	var faceCount = Object.keys(faceMap).length;
-	var containerHeight = $('body').height();
 	var containerWidth = $('body').width();
 	var $floatContainer = $('.float-body');
 
@@ -72,9 +71,15 @@
 		rowCount++;
 	};
 
+	$floatContainer.empty();
+
 	for (var i = 0; i < faceCount; i++) {
 		createRandomFace(i);
 	}
 
+}
 
-})();
+makeFaces();
+
+var button = document.getElementById('shuffle');
+button.addEventListener('click', makeFaces);
